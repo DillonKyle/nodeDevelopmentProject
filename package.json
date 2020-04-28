@@ -1,0 +1,22 @@
+{
+  "name": "nodeDevelopmentProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run backend\" \"npm run frontend\"",
+    "backend": "nodemon backend/bin/server",
+    "frontend": "parcel frontend/src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DillonKyle/nodeDevelopmentProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DillonKyle/nodeDevelopmentProject/issues"
+  },
+  "homepage": "https://github.com/DillonKyle/nodeDevelopmentProject#readme"
+}

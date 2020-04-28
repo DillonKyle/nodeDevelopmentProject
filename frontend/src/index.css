@@ -1,0 +1,210 @@
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(./assets/Roboto-Regular.ttf);
+}
+
+body {
+    background-image: url(./assets/background.png);
+    position: relative;
+    z-index: 1;
+}
+
+.signup-page {
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 15%;
+    font-size: 20px;
+    font-family: Roboto-Regular;
+    font-weight: 700;
+}
+
+.login-page {
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 15%;
+    font-size: 20px;
+    font-family: Roboto-Regular;
+    font-weight: 700;
+}
+
+.farmland {
+    background-image: url(./assets/farmlands.png);
+    position: relative;
+    background-size: 1920px 1080px;
+    z-index: -1;
+}
+
+.account-info-page {
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: relative;
+    top: 200px;
+    font-size: 30px;
+    font-family: Roboto-Regular;
+    font-weight: 700;
+    text-shadow: 2px 2px 15px cornsilk;  
+}
+
+.account-home-page {
+    text-align: center;
+    font-family: Roboto-Regular;
+    font-weight: 700;
+    text-shadow: 2px 2px 15px cornsilk;  
+}
+
+
+.h2 {
+    font-size: 60px;
+    position: absolute;
+    top: 20px;
+    margin-left: 40%;
+}
+
+.h3 {
+    font-size: 60px;
+}
+
+.link-account-info {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+    font-size: 20px;
+    background-color: chocolate;
+    color: cornsilk;
+    padding: 15px;
+    text-shadow: none;
+}
+
+.link-account-info:hover {
+    font-size: 20px;
+    background-color: brown;
+    color: cornsilk;
+    padding: 15px;
+}
+
+.link {
+    font-size: 20px;
+    background-color: chocolate;
+    color: cornsilk;
+    padding: 15px;
+    text-shadow: none;
+}
+
+.link:hover {
+    font-size: 20px;
+    background-color: brown;
+    color: cornsilk;
+    padding: 15px;
+}
+
+.signup-button {
+    background-color: rgb(182, 97, 0);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+
+.signup-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.signup-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.signup-button:hover span {
+    padding-right: 25px;
+    color: white;
+}
+
+.signup-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.back-button {
+    background-color: rgb(182, 97, 0);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+
+.back-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.back-button span:after {
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -20px;
+    transition: 0.5s;
+}
+
+.back-button:hover span {
+    padding-left: 25px;
+    color: white;
+}
+
+.back-button:hover span:after {
+    opacity: 1;
+    left: 0;
+}
+
+.logout-button {
+    position: absolute;
+    left: 50px;
+    top: 200px;
+    background-color: rgb(12, 12, 12);
+    border: none;
+    color: white;
+    padding: 15px 37px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+
+.logout-button:hover {
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+.login-button {
+    background-color: rgb(12, 12, 12);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+
+.login-button:hover {
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
