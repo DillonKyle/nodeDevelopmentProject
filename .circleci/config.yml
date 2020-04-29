@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout
       - run: | 
-          docker image build -t dillonkyle/node-dev-app .
+          docker image build -t dillonkyle/node-dev-app:latest .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push dillonkyle/node-dev-app
   deploy-aws:
