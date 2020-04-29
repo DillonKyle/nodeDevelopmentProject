@@ -8,21 +8,16 @@ jobs:
       - image: circleci/node:latest    
     steps:
       - checkout
-      - run: 'sudo npm install -g npm@latest'
-          # name: Update npm
-          # command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependecy-cache-{{ checksum "package-lock.json" }}
-      - run: 'npm run initial' 
-        # name: Install npm dependencies
-        # command: 'npm run initial' 
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
-      # - run:
-      #   name: Run test
-      #   command: 'npm run start'
+      - run: docker login
+      # - run: 'sudo npm install -g npm@latest'
+      # - restore_cache:
+      #     key: dependecy-cache-{{ checksum "package-lock.json" }}
+      # - run: 'npm run initial' 
+
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "package-lock.json" }}
+      #     paths:
+      #       - ./node_modules
   docker-deploy-image:
     working_directory: ~/app
     docker: 
@@ -60,6 +55,6 @@ workflows:
       # - docker-deploy-image:
       #     requires:
       #       - test
-      - deploy-aws:
-          requires:
-            - test
+      # - deploy-aws:
+      #     requires:
+      #       - test
