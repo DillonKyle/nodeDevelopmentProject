@@ -49,9 +49,9 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      context: node-dev-app
       - test
       - docker-deploy-image:
+          context: node-dev-app
           requires:
             - test
       - deploy-aws:
