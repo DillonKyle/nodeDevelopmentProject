@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  docker: circleci/docker@1.0.1
 jobs:
   test:
     working_directory: ~/app
@@ -23,14 +25,18 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     working_directory: ~/app
-    docker: 
-      - image: circleci/node:latest
+    executor: docker/docker
     steps:
       - checkout
-      - run: | 
-          docker image build -t dillonkyle/node-dev-app:latest .
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push dillonkyle/node-dev-app
+      - docker/check
+      - docker/build:
+          image: dillonkyle/node-dev-app
+      - docker/push:
+          image: dillonkyle/node-dev-app
+      # - run: | 
+      #     docker image build -t dillonkyle/node-dev-app:latest .
+      #     docker login -u $DOCKER_USER -p $DOCKER_PASS
+      #     docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
     docker:
