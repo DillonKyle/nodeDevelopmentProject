@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@1.0.1
 jobs:
   test:
-    # working_directory: ~/app
+    working_directory: ~/app
     docker: 
       - image: circleci/node:latest    
     steps:
@@ -24,22 +24,22 @@ jobs:
       #   name: Run test
       #   command: 'npm run start'
   docker-deploy-image:
-    # working_directory: ~/app
+    working_directory: ~/app
     # docker: 
     #   - image: circleci/node:latest    
     executor: docker/docker
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
-      - docker/build:
-          image: circleci/node
-      - docker/push:
-          image: dillonkyle/node-dev-app
-      # - run: | 
-      #     docker image build -t dillonkyle/node-dev-app:latest .
-      #     docker login -u $DOCKER_USER -p $DOCKER_PASS
-      #     docker push dillonkyle/node-dev-app
+      # - docker/check
+      # - docker/build:
+      #     image: dillonkyle/node-dev-app
+      # - docker/push:
+      #     image: dillonkyle/node-dev-app
+      - run: | 
+          docker image build -t dillonkyle/node-dev-app:latest .
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
     docker:
