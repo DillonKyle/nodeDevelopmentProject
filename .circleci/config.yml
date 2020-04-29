@@ -25,19 +25,20 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     working_directory: ~/app
-    executor: docker/docker
+    machine: true
+    # executor: docker/docker
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
-      - docker/build:
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-      - docker/push:
-          image: dillonkyle/node-dev-app
-      # - run: | 
-      #     docker image build -t dillonkyle/node-dev-app:latest .
-      #     docker login -u $DOCKER_USER -p $DOCKER_PASS
-      #     docker push dillonkyle/node-dev-app
+      # - docker/check
+      # - docker/build:
+      #     image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+      # - docker/push:
+      #     image: dillonkyle/node-dev-app
+      - run: | 
+          docker image build -t dillonkyle/node-dev-app:latest .
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
     docker:
