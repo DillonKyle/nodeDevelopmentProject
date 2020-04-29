@@ -2,6 +2,8 @@ version: 2.1
 jobs:
   test:
     working_directory: ~/app
+    docker: 
+      - image: circleci/node:latest    
     steps:
       - checkout
       - run: 'sudo npm install -g npm@latest'
