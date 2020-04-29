@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: |
-          cat > ~/.dockercfg << EOF >>
+          cat << 'EOF' >> ~/.dockercfg 
           {
             "https://index.docker.io/v1/": {
               "auth": "$DOCKER_AUTH",
