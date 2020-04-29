@@ -22,11 +22,12 @@ jobs:
       #   name: Run test
       #   command: 'npm run start'
   docker-deploy-image:
+    working_directory: ~/app
     machine: true
     steps:
       - checkout
       - run: | 
-          docker build -t dillonkyle/node-dev-app:$CIRCLE_BRANCH .
+          docker build -t dillonkyle/node-dev-app .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push dillonkyle/node-dev-app
   deploy-aws:
