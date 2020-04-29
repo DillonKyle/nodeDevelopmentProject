@@ -17,7 +17,7 @@ jobs:
               "email": "$DOCKER_EMAIL"
             }
           }
-          EOF >>
+          \EOF
       # - run: 'sudo npm install -g npm@latest'
       # - restore_cache:
       #     key: dependecy-cache-{{ checksum "package-lock.json" }}
