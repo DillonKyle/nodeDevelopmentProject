@@ -26,8 +26,8 @@ jobs:
     steps:
       - checkout
       - run: | 
+          docker build -t dillonkyle/node-dev-app:$CIRCLE_BRANCH .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t dillonkyle/node-dev-app .
           docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
