@@ -23,7 +23,7 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     machine:
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run: | 
