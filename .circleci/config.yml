@@ -31,7 +31,7 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: dillonkyle/node-dev-app
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
       - docker/push:
           image: dillonkyle/node-dev-app
       # - run: | 
