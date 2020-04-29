@@ -15,7 +15,7 @@ jobs:
           key: dependecy-cache-{{ checksum "package-lock.json" }}
       - run:
         name: Install npm dependencies
-        command: npm run initial 
+        command: 'npm run initial' 
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
