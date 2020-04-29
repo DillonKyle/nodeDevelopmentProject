@@ -1,6 +1,6 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@1.0.1
+# orbs:
+#   docker: circleci/docker@1.0.1
 jobs:
   test:
     working_directory: ~/app
@@ -25,9 +25,8 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     working_directory: ~/app
-    # docker: 
-    #   - image: circleci/node:latest    
-    executor: docker/docker
+    docker: 
+      - image: circleci/node:latest    
     steps:
       - setup_remote_docker
       - checkout
