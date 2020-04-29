@@ -33,7 +33,7 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: circleci/node:latest
+          image: circleci/node
       - docker/push:
           image: dillonkyle/node-dev-app
       # - run: | 
