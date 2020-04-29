@@ -37,9 +37,9 @@ jobs:
       # - docker/push:
       #     image: dillonkyle/node-dev-app
       - run: | 
-          docker build -t dillonkyle/node-dev-app:latest .
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push dillonkyle/node-dev-app
+          docker build dillonkyle/node-dev-app .
+        # docker login -u $DOCKER_USER -p $DOCKER_PASS
+        # docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
     docker:
