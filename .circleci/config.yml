@@ -9,15 +9,15 @@ jobs:
       - run: 'sudo npm install -g npm@latest'
           # name: Update npm
           # command: 'sudo npm install -g npm@latest'
-      # - restore_cache:
-      #     key: dependecy-cache-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          key: dependecy-cache-{{ checksum "package-lock.json" }}
       - run: 'npm run initial' 
         # name: Install npm dependencies
         # command: 'npm run initial' 
-      # - save_cache:
-      #     key: dependency-cache-{{ checksum "package-lock.json" }}
-      #     paths:
-      #       - ./node_modules
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
       # - run:
       #   name: Run test
       #   command: 'npm run start'
@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout
       - run: | 
-          docker build -t dillonkyle/node-dev-app  
+          docker build . -t dillonkyle/node-dev-app
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push dillonkyle/node-dev-app
   deploy-aws:
