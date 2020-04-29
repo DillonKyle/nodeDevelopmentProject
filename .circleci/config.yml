@@ -23,7 +23,6 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     working_directory: ~/app
-    machine: true
     steps:
       - checkout
       - run: | 
