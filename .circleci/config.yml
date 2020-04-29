@@ -28,7 +28,6 @@ jobs:
     executor: docker/docker
     steps:
       - checkout
-      - docker/check
       - docker/build:
           image: dillonkyle/node-dev-app
       - docker/push:
