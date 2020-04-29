@@ -25,7 +25,8 @@ jobs:
       #   command: 'npm run start'
   docker-deploy-image:
     working_directory: ~/app
-    machine: true
+    docker: 
+      - image: circleci/node:latest    
     # executor: docker/docker
     steps:
       - setup_remote_docker
