@@ -27,7 +27,9 @@ jobs:
     working_directory: ~/app
     executor: docker/docker
     steps:
+      - setup_remote_docker
       - checkout
+      - docker/check
       - docker/build:
           image: dillonkyle/node-dev-app
       - docker/push:
