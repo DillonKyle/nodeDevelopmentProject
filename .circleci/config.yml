@@ -51,8 +51,7 @@ jobs:
       - checkout
       - run: 
           name: Installing AWSCLI
-          command: |
-            'sudo pip install awsebcli --upgrade'
+          command: 'sudo pip install awsebcli --upgrade'
       - run: 
           name: Create AWS credentials
           command: |
