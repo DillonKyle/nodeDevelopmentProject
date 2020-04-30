@@ -50,17 +50,28 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Installing deployment dependencies
-          working_directory: /
-          command: 'sudo pip install awsebcli --upgrade'
+          name: Installing AWSCLI
+          command: |
+            'sudo pip install awsebcli --upgrade'
       - run: 
-          name: Deploying application to Elastic Beanstalk
-          command: eb deploy NodeDevApp-env
+          name: Create AWS credentials
+          command: |
+            mkdir ~/.aws
+            touch ~/.aws/config
+            chmod 600 ~/.aws/config
+            echo "[profile eb-cli]" > ~/.aws/config
+            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+      - run:
+          name: Deploy to EB if branch is Master
+          command: |
+            eb use NodeDevApp-env --profile eb-cli
+            eb deploy -v --staged --profile eb-cli
 workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - test
+      - deploy-aws
       # - docker-deploy-image:
       #     requires:
       #       - test
