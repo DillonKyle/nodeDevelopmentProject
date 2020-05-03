@@ -3,7 +3,7 @@ version: 2.1
 #   docker: circleci/docker@1.0.1
 jobs:
   test:
-    working_directory: ~/app
+    # working_directory: ~/app
     docker: 
       - image: circleci/node:latest    
     steps:
