@@ -91,10 +91,11 @@ RUN groupadd --gid 3434 circleci \
 
 # BEGIN IMAGE CUSTOMIZATIONS
 
-EXPOSE 5432
+EXPOSE 3000
 # END IMAGE CUSTOMIZATIONS
 
 USER circleci
 ENV PATH /home/circleci/.local/bin:/home/circleci/bin:${PATH}
 
-CMD ["/bin/sh"]
+# CMD ["/bin/sh"]
+CMD [ "npm run start"]
