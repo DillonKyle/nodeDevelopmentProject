@@ -47,5 +47,5 @@ workflows:
     jobs:
       - build
       - deploy-aws:
-        - requires:
-          - build
+          requires:
+            - build
