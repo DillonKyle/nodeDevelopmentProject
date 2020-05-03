@@ -90,7 +90,7 @@ RUN groupadd --gid 3434 circleci \
   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
 # BEGIN IMAGE CUSTOMIZATIONS
-
+EXPOSE 80
 # END IMAGE CUSTOMIZATIONS
 
 USER circleci
