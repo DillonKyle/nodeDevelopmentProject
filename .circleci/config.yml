@@ -39,8 +39,8 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
-            eb use NodeDevApp-env --profile eb-cli
-            eb deploy -v --staged --profile eb-cli
+            eb use NodeDevApp-env --profile default
+            eb deploy -v --staged --profile default
 workflows:
   version: 2
   build-and-deploy:
