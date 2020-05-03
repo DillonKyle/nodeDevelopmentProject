@@ -2,24 +2,13 @@ version: 2
 # orbs:
 #   docker: circleci/docker@1.0.1
 jobs:
-  test:
+  build:
     working_directory: ~/app
     docker: 
       - image: circleci/node:latest    
     steps:
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Install Docker Client
-      #     command: |
-      #       sudo apt-get update 
-      #       sudo curl -fsSL https://get.docker.com -o get-docker.sh
-      # # - run: 
-      # #     name: List /usr/bin/docker
-      # #     command: ls /usr/bin/docker
-      # - run:
-      #     name: Restart Docker Service 
-      #     command: sudo service docker restart
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/node-dev-app:latest .
@@ -29,31 +18,6 @@ jobs:
       - run:
           name: Docker Push
           command: docker push dillonkyle/node-dev-app:latest
-      # - run: 'sudo npm install -g npm@latest'
-      # - restore_cache:
-      #     key: dependecy-cache-{{ checksum "package-lock.json" }}
-      # - run: 'npm run initial' 
-
-      # - save_cache:
-      #     key: dependency-cache-{{ checksum "package-lock.json" }}
-      #     paths:
-      #       - ./node_modules
-  docker-deploy-image:
-    working_directory: ~/app
-    docker: 
-      - image: circleci/node:latest    
-    steps:
-      - setup_remote_docker
-      - checkout
-      # - docker/check
-      # - docker/build:
-      #     image: dillonkyle/node-dev-app
-      # - docker/push:
-      #     image: dillonkyle/node-dev-app
-      - run: | 
-          docker build dillonkyle/node-dev-app .
-        # docker login -u $DOCKER_USER -p $DOCKER_PASS
-        # docker push dillonkyle/node-dev-app
   deploy-aws:
     working_directory: ~/app
     docker:
@@ -81,10 +45,7 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - test
-      # - docker-deploy-image:
-      #     requires:
-      #       - test
-      # - deploy-aws:
-      #     requires:
-      #       - test
+      - build
+      - deploy-aws:
+        - require:
+          -build
