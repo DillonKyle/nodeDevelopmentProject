@@ -20,8 +20,8 @@ jobs:
           command: docker push dillonkyle/node-dev-app:latest
   deploy-aws:
     working_directory: ~/app
-    machine:
-      docker_layer_caching: false
+    docker:
+      - image: circleci/python:latest
     steps:
       - checkout
       - run: 
@@ -47,5 +47,5 @@ workflows:
     jobs:
       - build
       - deploy-aws:
-          requires:
-            - build
+        requires:
+          - build
