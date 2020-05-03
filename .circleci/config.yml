@@ -12,14 +12,11 @@ jobs:
       - run:
           name: Install Docker Client
           command: |
-            set -x
-            VER="18.06.3-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            sudo mv /tmp/docker/* /usr/bin
-      - run: 
-          name: List /usr/bin/docker
-          command: ls /usr/bin/docker
+            apt-get update 
+            curl -fsSL https://get.docker.com -o get-docker.sh
+      # - run: 
+      #     name: List /usr/bin/docker
+      #     command: ls /usr/bin/docker
       - run:
           name: Restart Docker Service 
           command: sudo service docker restart
