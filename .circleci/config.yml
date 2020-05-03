@@ -39,8 +39,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
-            eb use NodeDevApp-env
-            eb deploy -v --staged
+            eb deploy NodeDevApp-env
 workflows:
   version: 2
   build-and-deploy:
