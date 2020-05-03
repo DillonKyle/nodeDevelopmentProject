@@ -2,6 +2,19 @@ version: 2
 # orbs:
 #   docker: circleci/docker@1.0.1
 jobs:
+  test: 
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      -setup_remote_docker
+      - run: 
+        name: Installing NPM
+        command: 'sudo npm install -g npm@latest'
+      - run: 
+        name: Initialize
+        command: 'npm run initial'
   build:
     working_directory: ~/app
     docker: 
