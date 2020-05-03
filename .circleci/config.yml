@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Install Docker Client
           command: |
-            apt-get update 
-            curl -fsSL https://get.docker.com -o get-docker.sh
+            sudo apt-get update 
+            sudo curl -fsSL https://get.docker.com -o get-docker.sh
       # - run: 
       #     name: List /usr/bin/docker
       #     command: ls /usr/bin/docker
