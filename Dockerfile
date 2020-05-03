@@ -90,6 +90,15 @@ RUN groupadd --gid 3434 circleci \
   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
 # BEGIN IMAGE CUSTOMIZATIONS
+
+#################################
+# Install Nginx.
+#################################
+
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+RUN chown -R www-data:www-data /var/lib/nginx
+ADD config/nginx.conf /etc/nginx/sites-enabled/default
+
 EXPOSE 80
 # END IMAGE CUSTOMIZATIONS
 
