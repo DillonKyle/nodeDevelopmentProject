@@ -9,17 +9,17 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Install Docker Client
-          command: |
-            sudo apt-get update 
-            sudo curl -fsSL https://get.docker.com -o get-docker.sh
-      # - run: 
-      #     name: List /usr/bin/docker
-      #     command: ls /usr/bin/docker
-      - run:
-          name: Restart Docker Service 
-          command: sudo service docker restart
+      # - run:
+      #     name: Install Docker Client
+      #     command: |
+      #       sudo apt-get update 
+      #       sudo curl -fsSL https://get.docker.com -o get-docker.sh
+      # # - run: 
+      # #     name: List /usr/bin/docker
+      # #     command: ls /usr/bin/docker
+      # - run:
+      #     name: Restart Docker Service 
+      #     command: sudo service docker restart
       - run:
           name: Docker Build
           command: sudo docker build -t dillonkyle/node-dev-app:latest .
