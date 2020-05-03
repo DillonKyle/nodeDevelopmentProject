@@ -10,11 +10,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: 
-        name: Installing NPM
-        command: 'sudo npm install -g npm@latest'
+          name: Installing NPM
+          command: 'sudo npm install -g npm@latest'
       - run: 
-        name: Initialize
-        command: 'npm run initial'
+          name: Initialize
+          command: 'npm run initial'
   build:
     working_directory: ~/app
     docker: 
@@ -78,8 +78,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      # - build
-      - deploy-aws
-      # - deploy-aws:
-      #     requires:
-      #       - build
+      - test
+      - deploy-aws:
+          requires:
+            - test
