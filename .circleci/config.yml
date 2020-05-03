@@ -19,7 +19,7 @@ jobs:
             sudo mv /tmp/docker/* /usr/bin
       - run:
           name: Docker Build
-          command: docker build -t dillonkyle/node-dev-app:latest .
+          command: sudo docker build -t dillonkyle/node-dev-app:latest .
       - run:
           name: Docker Login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
