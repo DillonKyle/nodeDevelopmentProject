@@ -1,0 +1,57 @@
+version: 2
+jobs:
+  docker-build:
+    working_directory: ~/app
+    docker: 
+      - image: circleci/node:latest    
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Docker Build
+          command: docker build -t dillonkyle/node-dev-app:latest .
+      - run:
+          name: Docker Login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Docker Push
+          command: docker push dillonkyle/node-dev-app:latest
+  deploy-aws:
+    working_directory: ~/app
+    docker:
+      - image: circleci/python:latest
+    environment:
+      - DEV_ENV: NodeDevApp-env
+      - DEPLOY_BUCKET: elasticbeanstalk-us-east-2-449726727538
+      - APP_NAME: node-dev-app
+      - REGION: us-east-2
+    steps:
+      - checkout
+      - run: 
+          name: Installing AWSCLI
+          command: |
+            sudo pip install awsebcli --upgrade
+            sudo pip install awscli --upgrade
+      - run: 
+          name: Create AWS credentials
+          command: |
+            mkdir ~/.aws
+            touch ~/.aws/config
+            chmod 600 ~/.aws/config
+            echo "[profile eb-cli]" > ~/.aws/config
+            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+      - run:
+          name: "Upload to S3 DEPLOY_BUCKET"
+          command: |
+            zip -r node-dev-app-${CIRCLE_BUILD_NUM}.zip .
+            aws s3 cp node-dev-app-${CIRCLE_BUILD_NUM}.zip s3://${DEPLOY_BUCKET}
+            aws elasticbeanstalk create-application-version --application-name ${APP_NAME} \
+                --version-label node-dev-app-${CIRCLE_BUILD_NUM} --source-bundle S3Bucket=${DEPLOY_BUCKET},S3Key="node-dev-app-${CIRCLE_BUILD_NUM}.zip" --region ${REGION}
+            aws elasticbeanstalk update-environment --application-name ${APP_NAME} \
+                --environment-name ${DEV_ENV} --version-label node-dev-app-${CIRCLE_BUILD_NUM} --region ${REGION}
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy-aws

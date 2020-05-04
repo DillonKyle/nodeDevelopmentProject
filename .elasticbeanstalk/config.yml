@@ -1,0 +1,19 @@
+branch-defaults:
+  master:
+    environment: NodeDevApp-env
+environment-defaults:
+  NodeDevApp-env:
+    branch: null
+    repository: null
+global:
+  application_name: node-dev-app
+  default_ec2_keyname: i-0c92e1553d9784913
+  default_platform: arn:aws:elasticbeanstalk:us-east-2::platform/Docker running on
+    64bit Amazon Linux/2.12.17
+  default_region: us-east-2c
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  sc: git
+  workspace_type: Application
