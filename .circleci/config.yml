@@ -43,8 +43,8 @@ jobs:
     steps:
       - checkout
       - run: 
-        name: Installing NPM
-        command: 'sudo pip install npm'
+          name: Installing NPM
+          command: 'sudo pip install npm'
       - run: 
           name: Installing AWSCLI
           command: |
