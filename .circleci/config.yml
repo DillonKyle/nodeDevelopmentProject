@@ -43,6 +43,9 @@ jobs:
     steps:
       - checkout
       - run: 
+        name: Installing NPM
+        command: 'sudo pip install npm'
+      - run: 
           name: Installing AWSCLI
           command: |
             sudo pip install awsebcli --upgrade
@@ -73,7 +76,4 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - test
-      - deploy-aws:
-          requires:
-            - test
+      - deploy-aws
