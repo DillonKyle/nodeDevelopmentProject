@@ -97,5 +97,5 @@ EXPOSE 80
 USER circleci
 ENV PATH /home/circleci/.local/bin:/home/circleci/bin:${PATH}
 
-# CMD ["/bin/sh"]
-CMD [ "npm run start"]
+CMD ["/bin/sh"]
+# CMD [ "npm run start"]
