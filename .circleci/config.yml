@@ -42,9 +42,9 @@ jobs:
       - REGION: us-east-2
     steps:
       - checkout
-      - run: 
-          name: Installing NPM
-          command: 'sudo pip install npm'
+      # - run: 
+      #     name: Installing NPM
+      #     command: 'sudo pip install npm'
       - run: 
           name: Installing AWSCLI
           command: |
