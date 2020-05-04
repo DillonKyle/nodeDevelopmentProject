@@ -59,10 +59,6 @@ jobs:
             echo "[profile eb-cli]" > ~/.aws/config
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
-      # - run:
-      #     name: Deploy to EB if branch is Master
-      #     command: |
-      #       eb deploy NodeDevApp-env
       - run:
           name: "Upload to S3 DEPLOY_BUCKET"
           command: |
