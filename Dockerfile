@@ -20,5 +20,5 @@ RUN cp entrypoint.sh /usr/local/bin/ && \
 #RUN npm
 RUN yarn
 
+CMD ["npm", "run", "start"]
 #CMD ["pm2-runtime", "start", "./pm2/production.json"]
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
