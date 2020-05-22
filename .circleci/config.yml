@@ -27,6 +27,17 @@ jobs:
       - REGION: us-east-2
     steps:
       - checkout
+      - run:
+          name: Installing Node
+          command: |
+            sudo apt-get update
+            git clone https://github.com/nodejs/node.git
+            cd node
+            ./configure
+            make
+            sudo make install
+            curl -L https://npmjs.org/install.sh | sudo sh
+            npm -v
       - run: 
           name: Installing AWSCLI
           command: |

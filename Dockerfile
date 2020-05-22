@@ -23,6 +23,6 @@ USER ec2-user
 ENV PATH /home/ec2-user/.local/bin:/home/circleci/bin:${PATH}
 
 
-CMD ["npm", "run", "start"]
+ENTRYPOINT ["npm", "run", "start"]
 #CMD ["pm2-runtime", "start", "./pm2/production.json"]
 #ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
