@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: List folders
-          command: ls
+          command: ls backend
       - run:
           name: Install Docker Client
           command: apk add docker-cli
