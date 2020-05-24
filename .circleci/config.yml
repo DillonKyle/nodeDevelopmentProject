@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: List folders
+          command: ls
+      - run:
           name: Install Docker Client
           command: apk add docker-cli
       - run:
