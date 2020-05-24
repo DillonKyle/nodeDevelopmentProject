@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Install Sudo
           command: |
-            apk update && apk add sudo && apk add shadow
+            apk update && apk add sudo && apk add shadow && apk add openrc
       - run: 
           name: Add User
           command: |
