@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Docker Build
-          command: docker build -t dillonkyle/backend:initialPush ./backend
+          command: sudo docker build -t dillonkyle/backend:initialPush ./backend
       - run:
           name: Test Backend Communication
           command: docker run dillonkyle/backend npm test
