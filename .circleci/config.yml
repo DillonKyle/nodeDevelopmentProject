@@ -9,12 +9,12 @@ jobs:
       - run:
           name: Install Sudo
           command: |
-            apk update && apk add sudo
+            apk update && apk add sudo && apk add shadow
       - run: 
           name: Add User
           command: |
             sudo addgroup docker
-            sudo adduser --disabled-password --ingroup "docker" docker
+            sudo usermod -aG docker $(whoami)
       - run:
           name: Install Docker Client
           command: apk add docker-cli
