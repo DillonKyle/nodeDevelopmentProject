@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Docker Build
-          command: docker build -t dillonkyle/backend:latest ./backend
+          command: docker build -t dillonkyle/backend:initialPush ./backend
       - run:
           name: Test Backend Communication
           command: docker run dillonkyle/backend npm test
@@ -26,7 +26,7 @@ jobs:
       - checkout
       - run:
           name: Docker Build
-          command: docker build -t dillonkyle/frontend:latest ./frontend
+          command: docker build -t dillonkyle/frontend:initialPush ./frontend
       - run:
           name: Test Frontend Communication
           command: docker run dillonkyle/frontend npm test
