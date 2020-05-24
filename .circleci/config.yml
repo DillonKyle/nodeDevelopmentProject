@@ -1,7 +1,7 @@
 version: 2
 jobs:
   docker-build-backend:
-    working_directory: ~/app/backend
+    working_directory: ~/app
     docker: 
       - image: alpine 
     steps:
@@ -22,7 +22,7 @@ jobs:
           name: Docker Push
           command: docker push dillonkyle/backend:latest
   docker-build-frontend:
-    working_directory: ~/app/frontend
+    working_directory: ~/app
     docker: 
       - image: dillonkyle/frontend:initialPush     
     steps:
