@@ -22,8 +22,8 @@ jobs:
       - run:
           name: Docker Start
           command: |
-            sudo apk add iptables
-            sudo dockerd
+            sudo apk add iptables && sudo dockerd
+            
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
