@@ -13,7 +13,7 @@ jobs:
       - run: 
           name: Add User
           command: |
-            sudo groupadd docker
+            sudo addgroup docker
             sudo usermod -aG docker $(whoami)
       - run:
           name: Install Docker Client
