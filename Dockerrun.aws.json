@@ -6,22 +6,27 @@
            "links": [
                 "backend"
            ],
-           "essential": elasticmapreduce:ViewEventsFromAllClustersInConsole,
-           "image": "dillonkyle/ndaFrontend",
+           "essential": false,
+           "image": "dillonkyle/frontend",
            "portMappings": [
                 {
                     "containerPort":5000,
                     "hostPort":5000
                 }
            ],
-
-           "memory": "500"
+           "memory": 500
         },
         {
             "name": "backend",
-            "image": "dillonkyle/ndaBackend",
+            "image": "dillonkyle/backend",
             "memory": 500,
-            "essential": true
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort":8080,
+                    "hostPort":8080
+                }
+           ]
         }
      ]     
 }
