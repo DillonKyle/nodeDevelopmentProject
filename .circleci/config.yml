@@ -28,8 +28,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Instll Docker Client
-        command: apk add docker-cli
+          name: Instll Docker Client
+          command: apk add docker-cli
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/frontend:initialPush ./frontend
