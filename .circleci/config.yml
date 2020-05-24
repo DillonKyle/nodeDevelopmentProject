@@ -6,7 +6,6 @@ jobs:
       - image: dillonkyle/backend    
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:latest ./backend
@@ -25,7 +24,6 @@ jobs:
       - image: dillonkyle/frontend    
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/frontend:latest ./frontend
