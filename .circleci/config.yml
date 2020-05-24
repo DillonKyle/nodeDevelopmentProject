@@ -22,9 +22,7 @@ jobs:
       - run:
           name: Docker Start
           command: |
-            sudo service docker stop
-            sudo rm -rf /var/lib/docker
-            sudo service docker start
+            sudo service docker stop && sudo rm -rf /var/lib/docker && sudo service docker start
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
