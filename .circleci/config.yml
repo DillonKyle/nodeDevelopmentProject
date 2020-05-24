@@ -20,9 +20,6 @@ jobs:
           name: Install Docker Client
           command: apk add docker-cli && apk add docker
       - run:
-          name: Docker Start
-          command: sudo service docker restart
-      - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
       - run:
