@@ -76,8 +76,8 @@ workflows:
     jobs:
       - docker-build-backend
       - docker-build-frontend:
-        requires:
-          - docker-build-backend
+          requires:
+            - docker-build-backend
       - deploy-aws:
-        requires:
-          - docker-build-frontend
+          requires:
+            - docker-build-frontend
