@@ -21,7 +21,7 @@ jobs:
           command: apk add docker-cli && apk add docker
       - run:
           name: Docker Start
-          command: sudo systemctl restart docker.socket docker.service
+          command: sudo rc-service docker.socket docker.service restart
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
