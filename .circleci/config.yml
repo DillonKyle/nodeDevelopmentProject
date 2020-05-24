@@ -3,7 +3,7 @@ jobs:
   docker-build-backend:
     working_directory: ~/app
     docker: 
-      - image: dillonkyle/backend    
+      - image: dillonkyle/backend:initialPush    
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ jobs:
   docker-build-frontend:
     working_directory: ~/app
     docker: 
-      - image: dillonkyle/frontend    
+      - image: dillonkyle/frontend:initialPush     
     steps:
       - checkout
       - run:
