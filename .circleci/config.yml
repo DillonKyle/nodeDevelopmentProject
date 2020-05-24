@@ -1,14 +1,17 @@
 version: 2
 jobs:
   docker-build-backend:
-    working_directory: ~/app
+    working_directory: ~/app/backend
     docker: 
       - image: dillonkyle/backend:initialPush    
     steps:
       - checkout
       - run:
+          name: Instll Docker Client
+          command: apk add docker-cli
+      - run:
           name: Docker Build
-          command: sudo docker build -t dillonkyle/backend:initialPush ./backend
+          command: docker build -t dillonkyle/backend:initialPush ./backend
       - run:
           name: Test Backend Communication
           command: docker run dillonkyle/backend npm test
@@ -19,11 +22,14 @@ jobs:
           name: Docker Push
           command: docker push dillonkyle/backend:latest
   docker-build-frontend:
-    working_directory: ~/app
+    working_directory: ~/app/frontend
     docker: 
       - image: dillonkyle/frontend:initialPush     
     steps:
       - checkout
+      - run:
+        name: Instll Docker Client
+        command: apk add docker-cli
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/frontend:initialPush ./frontend
@@ -74,10 +80,10 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      # - docker-build-backend
-      # - docker-build-frontend:
-      #     requires:
-      #       - docker-build-backend
+      - docker-build-backend
+      - docker-build-frontend:
+          requires:
+            - docker-build-backend
       - deploy-aws
-          # requires:
-          #   - docker-build-frontend
+          requires:
+            - docker-build-frontend
