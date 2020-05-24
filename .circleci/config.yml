@@ -10,8 +10,8 @@ jobs:
           name: Docker Build
           command: docker build -t dillonkyle/backend:latest ./backend
       - run:
-        name: Test Backend Communication
-        command: docker run dillonkyle/backend npm test
+          name: Test Backend Communication
+          command: docker run dillonkyle/backend npm test
       - run:
           name: Docker Login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -28,7 +28,7 @@ jobs:
           name: Docker Build
           command: docker build -t dillonkyle/frontend:latest ./frontend
       - run:
-          name: Test Backend Communication
+          name: Test Frontend Communication
           command: docker run dillonkyle/frontend npm test
       - run:
           name: Docker Login
