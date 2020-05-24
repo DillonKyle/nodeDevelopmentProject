@@ -1,0 +1,27 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [ 
+        { 
+           "name": "frontend",
+           "links": [
+                "backend"
+           ],
+           "essential": elasticmapreduce:ViewEventsFromAllClustersInConsole,
+           "image": "dillonkyle/ndaFrontend",
+           "portMappings": [
+                {
+                    "containerPort":5000,
+                    "hostPort":5000
+                }
+           ],
+
+           "memory": "500"
+        },
+        {
+            "name": "backend",
+            "image": "dillonkyle/ndaBackend",
+            "memory": 500,
+            "essential": true
+        }
+     ]     
+}

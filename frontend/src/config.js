@@ -1,5 +1,5 @@
 const BACKEND = {
-    ADDRESS: 'http://localhost:3000'
+    ADDRESS: 'http://localhost:8080'
 };
 
 export { BACKEND };

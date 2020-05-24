@@ -1,0 +1,1 @@
+console.log("communication with frontend source bundle achieved!");

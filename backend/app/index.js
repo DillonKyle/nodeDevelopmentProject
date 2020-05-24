@@ -11,7 +11,7 @@ const app = express();
 // app.locals.engine = engine;
 
 app.use(cors({ 
-    origin: 'http://localhost:1234',
+    origin: 'http://localhost:5000',
     credentials: true
 }));
 

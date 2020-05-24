@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "node ./test.js",
     "dev": "nodemon ./bin/server.js",
     "configure": "sh ./bin/configure_db.sh",
     "configure-dev": "npm run configure && npm run dev"

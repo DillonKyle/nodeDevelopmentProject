@@ -1,2 +1,4 @@
 node_modules/
 .cache/
+Dockerfile-circleci.txt
+DockerFile-sample.txt

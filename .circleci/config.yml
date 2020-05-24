@@ -1,43 +1,54 @@
 version: 2
 jobs:
-  docker-build:
+  docker-build-backend:
     working_directory: ~/app
     docker: 
-      - image: circleci/node:latest    
+      - image: dillonkyle/backend    
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Docker Build
-          command: docker build -t dillonkyle/node-dev-app:latest .
+          command: docker build -t dillonkyle/backend:latest ./backend
+      - run:
+        name: Test Backend Communication
+        command: docker run dillonkyle/backend npm test
       - run:
           name: Docker Login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
           name: Docker Push
-          command: docker push dillonkyle/node-dev-app:latest
+          command: docker push dillonkyle/backend:latest
+  docker-build-frontend:
+    working_directory: ~/app
+    docker: 
+      - image: dillonkyle/frontend    
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Docker Build
+          command: docker build -t dillonkyle/frontend:latest ./frontend
+      - run:
+          name: Test Backend Communication
+          command: docker run dillonkyle/frontend npm test
+      - run:
+          name: Docker Login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Docker Push
+          command: docker push dillonkyle/frontend:latest
   deploy-aws:
     working_directory: ~/app
     docker:
       - image: circleci/python:latest
     environment:
-      - DEV_ENV: NodeDevApp-env
+      - DEV_ENV: NodeWebApp-env
       - DEPLOY_BUCKET: elasticbeanstalk-us-east-2-449726727538
-      - APP_NAME: node-dev-app
+      - APP_NAME: NodeWebApp
       - REGION: us-east-2
     steps:
       - checkout
-      - run:
-          name: Installing Node
-          command: |
-            sudo apt-get update
-            git clone https://github.com/nodejs/node.git
-            cd node
-            ./configure
-            make
-            sudo make install
-            curl -L https://npmjs.org/install.sh | sudo sh
-            npm -v
       - run: 
           name: Installing AWSCLI
           command: |
