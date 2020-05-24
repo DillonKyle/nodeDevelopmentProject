@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Docker Start
           command: |
+            sudo /etc/init.d/docker start
             sudo chmod 666 /var/run/docker.sock
             sudo dockerd
       - run:
