@@ -10,13 +10,13 @@ jobs:
           name: Install Sudo and Packages
           command: |
             apk update && apk add sudo && apk add shadow && apk add openrc
-      # - run: 
-      #     name: Add User
-      #     command: |
-      #       echo "Set disable_coredump false" >> /etc/sudo.conf
-      #       sudo addgroup docker
-      #       sudo usermod -aG docker $(whoami)
-      #       su chsh -s $(whoami)
+      - run: 
+          name: Add User
+          command: |
+            echo "Set disable_coredump false" >> /etc/sudo.conf
+            sudo addgroup docker
+            sudo usermod -aG docker $(whoami)
+            su chsh -s $(whoami)
       - run:
           name: Install Docker Client
           command: apk add docker-cli && apk add docker
