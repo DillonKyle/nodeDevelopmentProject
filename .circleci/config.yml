@@ -11,7 +11,7 @@ jobs:
           command: apk add docker-cli
       - run:
           name: Docker Start
-          command: service docker start.
+          command: dockerd
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
