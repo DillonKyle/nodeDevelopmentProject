@@ -7,16 +7,20 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Sudo and Add User
+          name: Install Sudo
           command: |
             apk update && apk add sudo
-            adduser -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+      - run: 
+          name: Add User
+          command: |
+            sudo groupadd docker
+            sudo usermod -aG docker $(whoami)
       - run:
           name: Install Docker Client
           command: apk add docker-cli
       - run:
           name: Docker Start
-          command: dockerd
+          command: sudo service docker start
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
