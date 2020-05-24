@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Sudo
+          name: Install Sudo and Packages
           command: |
             apk update && apk add sudo && apk add shadow && apk add openrc
       - run: 
@@ -16,13 +16,14 @@ jobs:
             echo "Set disable_coredump false" >> /etc/sudo.conf
             sudo addgroup docker
             sudo usermod -aG docker $(whoami)
+            su -s ${USER}
       - run:
           name: Install Docker Client
           command: apk add docker-cli && apk add docker
       - run:
           name: Docker Start
           command: |
-            sudo apk add iptables && sudo dockerd
+            sudo dockerd
             
       - run:
           name: Docker Build
