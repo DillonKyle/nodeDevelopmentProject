@@ -16,14 +16,14 @@ jobs:
             echo "Set disable_coredump false" >> /etc/sudo.conf
             sudo addgroup docker
             sudo usermod -aG docker $(whoami)
-            sudo chmod 666 /var/run/docker.sock
-            newgrp docker
       - run:
           name: Install Docker Client
           command: apk add docker-cli && apk add docker
       - run:
           name: Docker Start
-          command: sudo dockerd
+          command: |
+            sudo chmod 666 /var/run/docker.sock
+            sudo dockerd
       - run:
           name: Docker Build
           command: docker build -t dillonkyle/backend:initialPush ./backend
