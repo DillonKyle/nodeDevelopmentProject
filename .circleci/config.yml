@@ -13,6 +13,7 @@ jobs:
       - run: 
           name: Add User
           command: |
+            echo "Set disable_coredump false" >> /etc/sudo.conf
             sudo addgroup docker
             sudo usermod -aG docker $(whoami)
       - run:
