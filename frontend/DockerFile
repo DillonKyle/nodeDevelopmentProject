@@ -1,6 +1,6 @@
 FROM node:12.7.0-alpine
 
-WORKDIR '/front'
+WORKDIR '/app/frontend'
 
 RUN npm install -g parcel-bundler
 
