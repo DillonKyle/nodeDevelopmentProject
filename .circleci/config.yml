@@ -10,7 +10,7 @@ jobs:
           name: Install Sudo and Add User
           command: |
             apk update && apk add sudo
-            useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+            adduser -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
       - run:
           name: Install Docker Client
           command: apk add docker-cli
