@@ -6,15 +6,14 @@ jobs:
       - image: alpine 
     steps:
       - checkout
+      - run: 
+          name: Add User
+          command: |
+            USER 405
       - run:
           name: Install Sudo
           command: |
             apk update && apk add sudo
-      - run: 
-          name: Add User
-          command: |
-            sudo addgroup docker
-            sudo usermod -aG docker $(whoami)
       - run:
           name: Install Docker Client
           command: apk add docker-cli
