@@ -18,7 +18,7 @@ jobs:
             sudo usermod -aG docker $(whoami)
       - run:
           name: Install Docker Client
-          command: apk add docker-cli
+          command: apk add docker-cli && apk add docker
       - run:
           name: Docker Start
           command: sudo service docker start
