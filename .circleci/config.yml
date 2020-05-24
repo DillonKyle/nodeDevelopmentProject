@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Install Sudo and Add User
           command: |
-            apt-get update && apt-get -y install sudo
+            apk update && apk add sudo
             useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
       - run:
           name: Install Docker Client
