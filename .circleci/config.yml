@@ -100,6 +100,6 @@ workflows:
       # - docker-build-frontend:
       #     requires:
       #       - docker-build-backend
-      - deploy-aws:
+      - deploy-aws
           # requires:
           #   - docker-build-frontend
